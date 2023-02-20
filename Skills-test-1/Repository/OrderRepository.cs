@@ -18,6 +18,11 @@ namespace Skills_test_1.Repository
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Create new Order in Db
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public async Task<Order> CreateOrder(CreatorOrderDto order)
         {
             var newOrder = _mapper.Map<Order>(order);
@@ -47,6 +52,11 @@ namespace Skills_test_1.Repository
             return newOrder;
         }
 
+        /// <summary>
+        /// Delete order from db
+        /// </summary>
+        /// <param name="idOrder"></param>
+        /// <returns></returns>
         public async Task<Order> DeleteOrder(int idOrder)
         {
             var order = await _context.Order.Include(p => p.Product)
@@ -63,6 +73,10 @@ namespace Skills_test_1.Repository
             return order;
         }
 
+        /// <summary>
+        /// Get all order from db
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Order>> GetOrders()
         {
             var orders = await _context.Order.Include(p=>p.Product)

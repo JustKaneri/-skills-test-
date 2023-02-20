@@ -14,6 +14,11 @@ namespace Skills_test_1.Repository
             _context = context;
         }
 
+        /// <summary>
+        /// Delete product from db
+        /// </summary>
+        /// <param name="idProduct"></param>
+        /// <returns></returns>
         public async Task<Product> DeleteProduct(int idProduct)
         {
             Product deletingProduct = await _context.Product.Where(pr => pr.Id == idProduct).FirstOrDefaultAsync();
@@ -32,6 +37,10 @@ namespace Skills_test_1.Repository
             return deletingProduct;
         }
 
+        /// <summary>
+        /// Get all product from db
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Product>> GetProducts()
         {
             var products = await _context.Product.ToListAsync();
